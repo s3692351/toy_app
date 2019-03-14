@@ -13,7 +13,11 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = set_user
-    @post = @user.microposts.first
+    if @user.microposts.exists?
+      @post = @user.microposts.first.content
+    else
+      @post = "User doesn't have any posts"
+    end
   end
 
   # GET /users/new
