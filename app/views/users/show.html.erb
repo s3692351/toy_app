@@ -13,7 +13,14 @@
 <p>
   <strong>Posts by user:</strong>
   <br><br>
-  <%=@post%>
+  
+  <% if @posts.size>=1%>
+    <% @posts.each do |post| %>
+      <%= post.content %><br>
+    <% end %>
+  <%else%>
+  <%= "User doesn't have any posts" %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
